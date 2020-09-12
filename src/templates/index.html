@@ -1,0 +1,138 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="gridContainerIndex">
+
+
+    <div class="blackBar">
+      <div class="circleText">
+          <div class="circle">
+            l'argent est tout
+          </div>
+      </div>
+      <div class="blackMenu">
+        <div class="container">
+            <div class="row">
+                <div class="col-4 ">
+                    <div class="blackMenuText">
+                        contact 
+                    </div>
+                </div>
+                <div class="col-4 ">
+                    <div class="blackMenuText">
+                        statments
+                    </div>
+                </div>
+                <div class="col-4 ">
+                    <div class="blackMenuText">
+                        conditions
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="whiteBar">
+      <div class="whiteMenu">
+        <div class="container">
+            <div class="row">
+                <div class="col-4 col-md-2">
+                    <div class="whitekMenuText">
+                        Home
+                    </div>
+                </div>
+                <div class="col-4 col-md-2">
+                    <div class="whitekMenuText">
+                        about
+                    </div>
+                </div>
+                <div class="col-4 col-md-2">
+                    <div class="whitekMenuText">
+                        shop
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+      <div class="whiteInputField">
+            <div class="container">
+              <div class="row">
+                <div class="col-12">
+                    <form action="{% url 'products'   %}" method="POST">
+                        {% csrf_token %}
+                        <fieldset class="label-container">
+
+                        <input id="formSubject" name="make" type="text" />
+                    
+                        
+
+                        <input id="formSubject" name="model" class="inputMargin" type="text" />
+                       
+                        </fieldset>
+                    
+
+                        <fieldset>
+                            <input id="formButton" type="submit" value="Search" />
+                        </fieldset>
+                  </form>
+                </div>
+              </div>
+            </div>
+        
+
+
+
+
+      </div>
+      <div class="whitePictures">
+        <div class="boxPictures">
+            <div class="mosaic">
+                <div class="mosaicItem">
+                    <img class='imagesWidth' src="{% static 'images/eyes.jpg'  %}">
+                </div>
+                <div class="mosaicItem">
+                    <img class='imagesWidth'  src="{% static 'images/human.jpg'  %}">
+                </div>
+            </div>
+        </div>
+      </div>
+      <div class="whiteText">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="aboutInfoContainer">
+                        <div class="companyTitle">
+                            One place, multiple stores
+                        </div>
+                        <div class="companyAbout">
+                            With compere.it you don't have to search for the same product in multiple stores, our site will do it for you.
+                            Just search for whatever product you need and enjoy pain free shoping!
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+      </div>
+      <div class="whiteAbout">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="legalInfoContainer">
+                       
+                    Currently compare.it works with ebay and amazon*
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+
+</div>
+{% endblock %}

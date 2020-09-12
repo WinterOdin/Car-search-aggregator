@@ -1,0 +1,107 @@
+.gridContainerIndex {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 1px 1px;
+    grid-template-areas:
+      "whiteBar whiteBar whiteBar blackBar blackBar"
+      "whiteBar whiteBar whiteBar blackBar blackBar"
+      "whiteBar whiteBar whiteBar blackBar blackBar";
+  }
+  
+  .blackBar {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 0.5fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 1px 1px;
+    grid-template-areas:
+      "blackMenu blackMenu blackMenu"
+      ". circleText ."
+      ". . .";
+    grid-area: blackBar;
+  }
+  
+  .circleText { grid-area: circleText; }
+  
+  .blackMenu { grid-area: blackMenu; }
+  
+  .whiteBar {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    gap: 1px 1px;
+    grid-template-areas:
+      "whiteMenu whiteMenu whiteMenu"
+      "whiteInputField whiteInputField whiteInputField"
+      ". . whitePictures"
+      "whiteText whiteText whitePictures"
+      "whiteAbout whiteAbout whitePictures";
+    grid-area: whiteBar;
+  }
+  
+  .whiteMenu { grid-area: whiteMenu; }
+  
+  .whiteInputField { grid-area: whiteInputField; }
+  
+  .whitePictures { grid-area: whitePictures; }
+  
+  .whiteText { grid-area: whiteText; }
+  
+  .whiteAbout { grid-area: whiteAbout; }
+
+
+
+  @media (max-width: 700px) {
+    .gridContainerIndex {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 0.5fr 1.5fr 1fr 1fr;
+        gap: 1px 1px;
+        grid-template-areas:
+          "whiteBar whiteBar whiteBar whiteBar"
+          "whiteBar whiteBar whiteBar whiteBar"
+          "blackBar blackBar blackBar blackBar"
+          "blackBar blackBar blackBar blackBar";
+      }
+      
+      .whiteBar {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 0.5fr 2fr 1fr 1fr 0.5fr;
+        gap: 1px 1px;
+        grid-template-areas:
+          "whiteMenu whiteMenu whiteMenu"
+          "whiteInputField whiteInputField whiteInputField"
+          "whiteText whiteText whiteText"
+          "whiteAbout whiteAbout whiteAbout"
+          "whiteAbout whiteAbout whiteAbout";
+        grid-area: whiteBar;
+      }
+      
+      .whiteMenu { grid-area: whiteMenu; }
+      
+      .whiteText { grid-area: whiteText; }
+      
+      .whiteAbout { grid-area: whiteAbout; }
+      
+      .whiteInputField { grid-area: whiteInputField; padding-top: 10vh; }
+      
+      .whitePictures { grid-area: whitePictures; }
+      
+      .blackBar {
+        display: grid;
+        grid-template-columns: 0.5fr 1fr 0.5fr;
+        grid-template-rows: 0.5fr 1fr;
+        gap: 1px 1px;
+        grid-template-areas:
+          "blackMenu blackMenu blackMenu"
+          "circleText circleText circleText";
+        grid-area: blackBar;
+      }
+      
+      .circleText { grid-area: circleText; }
+      
+      .blackMenu { grid-area: blackMenu; }
+
+
+  }
