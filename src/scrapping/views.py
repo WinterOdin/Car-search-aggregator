@@ -19,11 +19,23 @@ def home(request):
 def listGenerator(request):
     searchData = [] 
     if request.method == "POST":
-        make   = request.POST.get('make')
+        make    = request.POST.get('make')
         model   = request.POST.get('model')
-        olxResult = olxScrapper(make,model)
-        print(olxResult)
-    context={}
+        olx     = olxScrapper(make,model)
+        auto    = autoscoutScrapper(make,model)
+        oto     = otomotoScrapper(make,model)
+        print(olx)
+        print()
+        print(auto)
+        print()
+        print(oto)
+
+    context={
+        'olx':olx,
+        'auto':auto,
+        'oto':oto
+
+    }
     return render(request, 'products.html', context)
 
 
@@ -38,12 +50,12 @@ def autoscoutScrapper(make,model):
     carList         = soup.find_all('div', class_='cldt-summary-full-item-main')
     nameList, priceList, linkList, additionalList, pictureList = [],[],[],[],[]
     for x in carList:
-        carName     = x.find('h2',   class_="cldt-summary-makemodel sc-font-bold sc-ellipsis").text
-        carPrice    = x.find('span', class_="cldt-price sc-font-xl sc-font-bold" , attrs={"data-item-name":"price"}).text.strip()
+        carName     = x.find('h2',   class_="cldt-summary-makemodel sc-font-bold sc-ellipsis").get_text()
+        carPrice    = x.find('span', class_="cldt-price sc-font-xl sc-font-bold" , attrs={"data-item-name":"price"}).get_text(strip=True)
         shortLink   = x.find('a',    href=True, attrs={'data-item-name':True})
         longLink    = baseUrl+shortLink['href']
         try:
-            additionalName   = x.find('h2', class_="cldt-summary-version sc-ellipsis").text
+            additionalName   = x.find('h2', class_="cldt-summary-version sc-ellipsis").get_text()
         except:
             additionalName   = ""
         try:
@@ -58,8 +70,7 @@ def autoscoutScrapper(make,model):
         pictureList.append(carPicture)
 
     autoscoutData   = list(zip(pictureList,nameList,additionalList,priceList,linkList))
-    #return autoscoutData 
-    pass
+    return autoscoutData
 
 def otomotoScrapper(make,model):
     baseUrl        =  'https://www.otomoto.pl/'
@@ -76,12 +87,11 @@ def otomotoScrapper(make,model):
         carData     = x.find('a',  href=True, class_="offer-title__link")
         longLink    = carData['href']
         carName     = carData['title']
-        carPrice    = x.find('span', class_="offer-price__number ds-price-number" ).text.strip().replace('\n','')
+        carPrice    = x.find('span', class_="offer-price__number ds-price-number" ).get_text(strip=True)
         try:
-            additionalName   = x.find('h3', class_="offer-item__subtitle ds-title-complement hidden-xs", attrs={'data-type':"complement"} ).text
+            additionalName   = x.find('h3', class_="offer-item__subtitle ds-title-complement hidden-xs", attrs={'data-type':"complement"} ).get_text()
         except:
             additionalName   = ""
-        additionalList.append(additionalName)
         try:
             tagPicture  = x.find('img', class_="lazyload")
             carPicture  = tagPicture["data-srcset"][:-4]
@@ -102,23 +112,26 @@ def otomotoScrapper(make,model):
 def olxScrapper(make,model):
     baseUrl        =  'https://www.olx.pl/motoryzacja/samochody/'
     if not model:
-        olxR = requests.get(f'https://www.olx.pl/motoryzacja/samochody/{make}/?search%5Border%5D=created_at%3Adesc')
+        olxR = requests.get(f'https://www.olx.pl/motoryzacja/samochody/{make}/')
     else:
         olxR = requests.get(f'https://www.olx.pl/motoryzacja/samochody/{make}/{model}/?search%5Border%5D=created_at%3Adesc')
     soup            = BeautifulSoup(olxR.content, 'lxml')
-    carList         = soup.find_all('tr', class_='wrap')
+    carList         = soup.find_all('table', attrs={"summary":"Ogłoszenie"})
     nameList, priceList, linkList, additionalList, pictureList = [],[],[],[],[]
     for x in carList:
-        carData     = x.find('a',  href=True, class_="link linkWithHash detailsLink")
-        longLink    = str(carData['href'])
-        
-    
-        #nameList.append(carName)
+        carData    = x.find("img", class_="fleft")
+        carPicture = carData["src"]
+        carName    = ','.join(carData["alt"].split()[:4]).replace(',',' ')
+        secondName = ','.join(carData["alt"].split()[4::]).replace(',',' ')
+        carLink    = x.find("a",attrs={"data-cy":"listing-ad-title"})['href']
+        carPrice   = x.find("p", class_="price").get_text(strip=True)
 
-        #linkList.append(longLink)
-      
+        priceList.append(carPrice)
+        nameList.append(carName)
+        linkList.append(carLink)
+        pictureList.append(carPicture)
+        additionalList.append(secondName)
 
-    #olxData   = list(zip(pictureList,nameList,additionalList,priceList,linkList))
+    olxData   = list(zip(pictureList,nameList,additionalList,priceList,linkList))
 
-    return longLink
-
+    return  olxData
