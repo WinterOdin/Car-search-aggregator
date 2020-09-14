@@ -4,7 +4,7 @@
 
 
 
-<div class="titleWrapper">
+<!---<div class="titleWrapper">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -15,27 +15,75 @@
         </div>
     </div>
 </div>
-
-
+--->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="siteName">
+                AUTOSCOUT
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="container">
     <div class="row" >
-        {% for picture,name,add,price,link in olx  %}
-        <div class="col-4">
+        {% for picture,name,add,price,link in auto  %}
+        <div class="col-md-4 col-sm-12">
             <div class="offerWrapper itemWrapper">
                 <div class="pictureOffer">
-                    <img class="albumPictureStyle" src='{{ picture  }}' >
-
+                    
+                    
+                    <div class="image" style="background-image: url('{{ picture  }}')"></div>
                 </div>
                 <div class="infoWrapper">
                     <div class="titleOffer">
-
+                        {{ name  }}
                     </div>
                     <div class="moreInfoOffer">
-
+                        {{ add  }}
                     </div>
                     <div class="priceOffer">
+                        {{ price  }}
+                    </div>
+                    <div class="buttonOffer">
 
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        {% endfor  %}
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="siteName">
+                OTOMOTO
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row" >
+        {% for picture,name,add,price,link in oto  %}
+        <div class="col-md-4 col-sm-12">
+            <div class="offerWrapper itemWrapper">
+                <div class="pictureOffer">
+                    
+                    
+                    <div class="image" style="background-image: url('{{ picture  }}')"></div>
+                </div>
+                <div class="infoWrapper">
+                    <div class="titleOffer">
+                        {{ name  }}
+                    </div>
+                    <div class="moreInfoOffer">
+                        {{ add  }}
+                    </div>
+                    <div class="priceOffer">
+                        {{ price  }}
                     </div>
                     <div class="buttonOffer">
 

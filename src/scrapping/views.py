@@ -21,17 +21,17 @@ def listGenerator(request):
     if request.method == "POST":
         make    = request.POST.get('make')
         model   = request.POST.get('model')
-        olx     = olxScrapper(make,model)
+        #olx     = olxScrapper(make,model)
         auto    = autoscoutScrapper(make,model)
         oto     = otomotoScrapper(make,model)
-        print(olx)
+       # print(olx)
         print()
         print(auto)
         print()
         print(oto)
 
     context={
-        'olx':olx,
+        #'olx':olx,
         'auto':auto,
         'oto':oto
 
@@ -57,7 +57,7 @@ def autoscoutScrapper(make,model):
         try:
             additionalName   = x.find('h2', class_="cldt-summary-version sc-ellipsis").get_text()
         except:
-            additionalName   = ""
+            additionalName   = "No additiona info provided."
         try:
             tagPicture  = x.find('img', class_="lazyload")
             carPicture  = tagPicture["data-src"]
@@ -91,7 +91,7 @@ def otomotoScrapper(make,model):
         try:
             additionalName   = x.find('h3', class_="offer-item__subtitle ds-title-complement hidden-xs", attrs={'data-type':"complement"} ).get_text()
         except:
-            additionalName   = ""
+            additionalName   = "No additiona info provided."
         try:
             tagPicture  = x.find('img', class_="lazyload")
             carPicture  = tagPicture["data-srcset"][:-4]
