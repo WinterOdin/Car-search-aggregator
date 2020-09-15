@@ -1,7 +1,7 @@
-*{
+body{
     margin:0;
     padding:0;
-    
+    overflow-y: hidden;
     font-family: 'Gelasio', serif;
 }
 .blackBar{
@@ -10,6 +10,8 @@
     margin-left: 10%;
     height: 100vh;
 }
+
+
 
 .circle {
     width: 250px;
@@ -39,7 +41,7 @@
 .whitekMenuText{
     color:black;
 }
-
+    
 
 
 .wrapperInput{
@@ -53,10 +55,12 @@ form {
     background: #fff;
     border-radius: 2px;
     transition: all 0.5s ease-in-out;
+    overflow-y: visible !important;
   }
   form:focus, form:hover {
     box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     transition: all 0.5s ease-in-out;
+    overflow-y: visible !important;
 }
 
   fieldset {
@@ -120,7 +124,6 @@ form {
   [type=submit] {
     font-family: 'Lato', sans-serif;
     letter-spacing: 2px;
-
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -134,6 +137,7 @@ form {
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
     -webkit-transition: all 0.5s cubic-bezier(0.62, 0.28, 0.23, 0.99);
     transition: all 0.5s cubic-bezier(0.62, 0.28, 0.23, 0.99);
+    margin-top: 2vh;
   }
   [type=submit]:focus, [type=submit]:hover {
     box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);

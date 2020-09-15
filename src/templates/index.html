@@ -77,15 +77,16 @@
                         </fieldset>-->
                     
 
+                        
+                        <select name="make" class="selectControl" >
+                            <option value="">select the make</option>
+                            {% for x in make  %}
+                            <option value="{{  x.make  }}">{{ x.make  }}</option>
+                            {% endfor  %}
+                        </select>
                         <fieldset>
                             <input id="formButton" type="submit" value="Search" />
                         </fieldset>
-                        <select name="make" id="carYear" class=" selectControlCar" >
-                            <option value="">select the year </option>
-                            {% for i in make  %}
-                            <option value="{{  i.id  }}">{{ i.make  }}</option>
-                            {% endfor  %}
-                        </select>
                   </form>
                 </div>
               </div>
@@ -117,8 +118,8 @@
                             One place, multiple stores
                         </div>
                         <div class="companyAbout">
-                            With compere.it you don't have to search for the same product in multiple stores, our site will do it for you.
-                            Just search for whatever product you need and enjoy pain free shoping!
+                            With compere.it you don't have to search for the best car deals in multiple stores, our site will do it for you.
+                            Just search for whatever brand you want and enjoy pain free deals!
                         </div>
                     </div>
                     
@@ -132,7 +133,7 @@
                 <div class="col-12">
                     <div class="legalInfoContainer">
                        
-                    Currently compare.it works with ebay and amazon*
+                    Currently compare.it works with otomoto, olx and autoscout*
                     
                     </div>
                 </div>

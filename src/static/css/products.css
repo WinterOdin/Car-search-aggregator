@@ -1,6 +1,24 @@
-*{
+body{
     overflow-wrap: break-word;
-    
+    overflow-y: visible ;
+}
+.selectControl {
+  padding: 15px 20px;
+  border: 0;
+  font-size: 17px;
+  width: 100%;
+  margin-top: 4vh;
+  border-radius: 5px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-style: italic;
+  text-align: center;
+  font-family: 'Montserrat';
+  border-bottom: 1px solid #fcc842;
+}
+.selectControl:focus {
+  outline: none;
+  -webkit-box-shadow: none;
 }
 .searchWord{
     font-family: 'Lato', serif;

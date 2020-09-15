@@ -26,7 +26,7 @@ def listGenerator(request):
         #olx     = olxScrapper(make,model)
         auto    = autoscoutScrapper(make,model)
         oto     = otomotoScrapper(make,model)
-
+        print(auto)
     context={
         #'olx':olx,
         'auto':auto,
@@ -67,7 +67,7 @@ def autoscoutScrapper(make,model):
         pictureList.append(carPicture)
 
     autoscoutData   = list(zip(pictureList,nameList,additionalList,priceList,linkList))
-    return autoscoutData
+    return autoscoutData 
 
 def otomotoScrapper(make,model):
     baseUrl        =  'https://www.otomoto.pl/'
