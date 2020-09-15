@@ -64,6 +64,8 @@
                 <div class="col-12">
                     <form action="{% url 'products'   %}" method="POST">
                         {% csrf_token %}
+
+                        <!---
                         <fieldset class="label-container">
 
                         <input id="formSubject" name="make" type="text" />
@@ -72,12 +74,18 @@
 
                         <input id="formSubject" name="model" class="inputMargin" type="text" />
                        
-                        </fieldset>
+                        </fieldset>-->
                     
 
                         <fieldset>
                             <input id="formButton" type="submit" value="Search" />
                         </fieldset>
+                        <select name="make" id="carYear" class=" selectControlCar" >
+                            <option value="">select the year </option>
+                            {% for i in make  %}
+                            <option value="{{  i.id  }}">{{ i.make  }}</option>
+                            {% endfor  %}
+                        </select>
                   </form>
                 </div>
               </div>

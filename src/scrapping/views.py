@@ -5,11 +5,13 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import requests
 from django.templatetags.static import static
-
+from .models import *
 
 def home(request):
- 
-    context={}
+    make    =  Make.objects.all() 
+    context={
+        'make':make
+    }
     return render(request,'index.html', context)
 
 
@@ -24,11 +26,6 @@ def listGenerator(request):
         #olx     = olxScrapper(make,model)
         auto    = autoscoutScrapper(make,model)
         oto     = otomotoScrapper(make,model)
-       # print(olx)
-        print()
-        print(auto)
-        print()
-        print(oto)
 
     context={
         #'olx':olx,
