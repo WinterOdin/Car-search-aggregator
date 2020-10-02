@@ -14,7 +14,7 @@ body{
   font-style: italic;
   text-align: center;
   font-family: 'Montserrat';
-  border-bottom: 1px solid #fcc842;
+  border-bottom: 1px solid black;
 }
 .selectControl:focus {
   outline: none;
